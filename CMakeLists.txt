@@ -41,3 +41,15 @@ add_executable(stage1_client
     src/stage1/client.cpp
 )
 target_link_libraries(stage1_client PRIVATE net_common)
+
+# Stage 2: Multi-Client Blocking Server & Full-Duplex Client
+add_executable(stage2_server
+    src/stage2/server.cpp
+)
+target_link_libraries(stage2_server PRIVATE net_common)
+
+add_executable(stage2_client
+    src/stage2/client.cpp
+)
+target_link_libraries(stage2_client PRIVATE net_common)
+

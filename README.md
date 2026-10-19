@@ -5,7 +5,7 @@ An educational systems-programming project exploring TCP/IP networking, Linux PO
 ## Project Road Map
 
 - [x] **Stage 1: Basic TCP Server & Client (Single Client, Blocking I/O, POSIX Sockets)**
-- [ ] **Stage 2: Multi-Client Blocking Server (Thread-per-Client & Mutex Synchronization)**
+- [x] **Stage 2: Multi-Client Blocking Server (Thread-per-Client & Mutex Synchronization)**
 - [ ] **Stage 3: Thread Pool & Work Queues (Bounded Worker Pool & Task Scheduling)**
 - [ ] **Stage 4: Non-Blocking Sockets & `select()` (I/O Multiplexing & Buffer Tracking)**
 - [ ] **Stage 5: High-Concurrency Linux `epoll` (Level & Edge Triggered Event Loop)**
@@ -68,3 +68,4 @@ nc 127.0.0.1 8080
 ```bash
 ./tests/stage1_test.sh
 ```
+

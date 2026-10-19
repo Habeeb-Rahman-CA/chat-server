@@ -84,3 +84,4 @@ std::string format_address(const struct sockaddr_in& addr);
 std::string format_peer_address(int fd);
 
 } // namespace net
+

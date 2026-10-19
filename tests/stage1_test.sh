@@ -63,3 +63,4 @@ cat /tmp/stage1_server.log
 
 echo ""
 echo "=== Stage 1 Automated Test PASSED successfully! ==="
+
