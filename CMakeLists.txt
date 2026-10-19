@@ -65,3 +65,9 @@ add_executable(stage4_server
 )
 target_link_libraries(stage4_server PRIVATE net_common)
 
+# Stage 5: Linux epoll Server
+add_executable(stage5_server
+    src/stage5/server.cpp
+)
+target_link_libraries(stage5_server PRIVATE net_common)
+
