@@ -53,3 +53,9 @@ add_executable(stage2_client
 )
 target_link_libraries(stage2_client PRIVATE net_common)
 
+# Stage 3: Thread Pool and Work Queues
+add_executable(stage3_server
+    src/stage3/server.cpp
+)
+target_link_libraries(stage3_server PRIVATE net_common)
+
