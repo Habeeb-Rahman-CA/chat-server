@@ -6,12 +6,12 @@ An educational systems-programming project exploring TCP/IP networking, Linux PO
 
 - [x] **Stage 1: Basic TCP Server & Client (Single Client, Blocking I/O, POSIX Sockets)**
 - [x] **Stage 2: Multi-Client Blocking Server (Thread-per-Client & Mutex Synchronization)**
-- [ ] **Stage 3: Thread Pool & Work Queues (Bounded Worker Pool & Task Scheduling)**
-- [ ] **Stage 4: Non-Blocking Sockets & `select()` (I/O Multiplexing & Buffer Tracking)**
-- [ ] **Stage 5: High-Concurrency Linux `epoll` (Level & Edge Triggered Event Loop)**
-- [ ] **Stage 6: Custom Chat Protocol (Framing, Serialization, Room & User Management)**
-- [ ] **Stage 7: Reliability & Security (Flow Control, Backpressure, Slow-Client Eviction)**
-- [ ] **Stage 8: Benchmarking & Profiling (Latency, Throughput, `perf`, `strace`, `ss`)**
+- [x] **Stage 3: Thread Pool & Work Queues (Bounded Worker Pool & Task Scheduling)**
+- [x] **Stage 4: Non-Blocking Sockets & `select()` (I/O Multiplexing & Buffer Tracking)**
+- [x] **Stage 5: High-Concurrency Linux `epoll` (Level & Edge Triggered Event Loop)**
+- [x] **Stage 6: Custom Chat Protocol (Framing, Serialization, Room & User Management)**
+- [x] **Stage 7: Reliability & Security (Flow Control, Backpressure, Slow-Client Eviction)**
+- [x] **Stage 8: Benchmarking & Profiling (Latency, Throughput, `perf`, `strace`, `ss`)**
 
 ---
 
@@ -48,24 +48,69 @@ cmake --build build
 
 ---
 
-## Running Stage 1
-
-### Terminal 1: Run Server
+## Running the Different Architectures
+ 
+### Stage 1: Basic TCP Server & Client
 ```bash
 ./build/stage1_server -a 0.0.0.0 -p 8080
-```
-
-### Terminal 2: Connect using Client or Netcat
-```bash
-# Using the Stage 1 C++ client:
 ./build/stage1_client -a 127.0.0.1 -p 8080
-
-# Or using netcat:
-nc 127.0.0.1 8080
 ```
 
-### Running Automated Test
+### Stage 2: Thread-per-Client Server & Full-Duplex Client
+```bash
+./build/stage2_server -p 8080
+./build/stage2_client -p 8080
+```
+
+### Stage 3: Thread-Pool & Work-Queue Server
+```bash
+./build/stage3_server -p 8080 -t 4
+```
+
+### Stage 4: Non-Blocking select() Server
+```bash
+./build/stage4_server -p 8080
+```
+
+### Stage 5: Linux epoll Server (Level & Edge Triggered)
+```bash
+# Level-Triggered:
+./build/stage5_server -p 8080
+
+# Edge-Triggered:
+./build/stage5_server -p 8080 --et
+```
+
+### Stage 6: Application Protocol Server
+```bash
+./build/stage6_server -p 8080
+```
+
+### Stage 7: Secure, Reliable Production-Grade Server
+```bash
+./build/stage7_server -p 8080 -m 1000 -t 60
+```
+
+### Stage 8: Load Generator & Benchmark Suite
+```bash
+# Run benchmark against any running server
+./build/chat_benchmark -p 8080 -c 50 -m 30
+
+# Or execute full automated comparison script:
+./scripts/run_benchmarks.sh
+```
+
+---
+
+## Running Automated Tests
+
 ```bash
 ./tests/stage1_test.sh
+./tests/stage2_test.sh
+./tests/stage3_test.sh
+./tests/stage4_test.sh
+./tests/stage5_test.sh
+./tests/stage6_test.sh
+./tests/stage7_test.sh
 ```
 

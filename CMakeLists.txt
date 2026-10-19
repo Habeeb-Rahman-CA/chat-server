@@ -83,3 +83,9 @@ add_executable(stage7_server
 )
 target_link_libraries(stage7_server PRIVATE net_common)
 
+# Stage 8: Benchmark and Load Generator
+add_executable(chat_benchmark
+    src/benchmarks/benchmark.cpp
+)
+target_link_libraries(chat_benchmark PRIVATE net_common)
+
