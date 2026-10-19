@@ -77,6 +77,9 @@ void set_reuse_addr(int fd, bool enable = true);
 // Configures socket non-blocking mode via fcntl(fd, F_SETFL, O_NONBLOCK)
 void set_nonblocking(int fd, bool enable = true);
 
+// Configures TCP Keepalive so home NAT routers and firewalls don't silently drop idle friend connections
+void set_tcp_keepalive(int fd, int idle_sec = 30, int interval_sec = 5, int count = 3);
+
 // Converts an IPv4 string and port into a sockaddr_in structure.
 bool parse_ipv4(const std::string& ip_str, uint16_t port, struct sockaddr_in& out_addr);
 

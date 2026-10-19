@@ -4,6 +4,7 @@
 #include <cerrno>
 #include <cstring>
 #include <fcntl.h>
+#include <netinet/tcp.h>
 #include <stdexcept>
 #include <system_error>
 
@@ -37,6 +38,20 @@ void set_nonblocking(int fd, bool enable) {
     if (::fcntl(fd, F_SETFL, flags) < 0) {
         throw std::system_error(errno, std::generic_category(), "fcntl(F_SETFL) failed");
     }
+}
+
+void set_tcp_keepalive(int fd, int idle_sec, int interval_sec, int count) {
+    int optval = 1;
+    ::setsockopt(fd, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval));
+#ifdef TCP_KEEPIDLE
+    ::setsockopt(fd, IPPROTO_TCP, TCP_KEEPIDLE, &idle_sec, sizeof(idle_sec));
+#endif
+#ifdef TCP_KEEPINTVL
+    ::setsockopt(fd, IPPROTO_TCP, TCP_KEEPINTVL, &interval_sec, sizeof(interval_sec));
+#endif
+#ifdef TCP_KEEPCNT
+    ::setsockopt(fd, IPPROTO_TCP, TCP_KEEPCNT, &count, sizeof(count));
+#endif
 }
 
 bool parse_ipv4(const std::string& ip_str, uint16_t port, struct sockaddr_in& out_addr) {

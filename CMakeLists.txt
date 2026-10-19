@@ -89,3 +89,14 @@ add_executable(chat_benchmark
 )
 target_link_libraries(chat_benchmark PRIVATE net_common)
 
+# Production Terminal Chat Server & Client
+add_executable(chat_server
+    src/prod/server.cpp
+)
+target_link_libraries(chat_server PRIVATE net_common)
+
+add_executable(chat_client
+    src/prod/client.cpp
+)
+target_link_libraries(chat_client PRIVATE net_common)
+
