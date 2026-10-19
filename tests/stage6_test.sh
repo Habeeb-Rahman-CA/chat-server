@@ -120,3 +120,4 @@ grep -q "CHAT Alice Fragmented message" /tmp/p6_2.out && echo "  -> Fragmented T
 grep -q "CHAT Alice batch_one" /tmp/p6_2.out && grep -q "CHAT Alice batch_two" /tmp/p6_2.out && echo "  -> Multiple messages per packet: PASS"
 
 echo "=== All Stage 6 Protocol Tests PASSED! ==="
+

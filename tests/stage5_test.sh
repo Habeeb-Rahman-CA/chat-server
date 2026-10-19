@@ -82,3 +82,4 @@ PORT=19881
 run_test "--et" "Edge-Triggered (ET)"
 
 echo "=== All Stage 5 epoll tests PASSED! ==="
+
