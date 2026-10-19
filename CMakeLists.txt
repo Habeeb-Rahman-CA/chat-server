@@ -71,3 +71,9 @@ add_executable(stage5_server
 )
 target_link_libraries(stage5_server PRIVATE net_common)
 
+# Stage 6: Application Protocol Server
+add_executable(stage6_server
+    src/stage6/server.cpp
+)
+target_link_libraries(stage6_server PRIVATE net_common)
+
