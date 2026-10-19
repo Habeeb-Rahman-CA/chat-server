@@ -113,3 +113,4 @@ Once inside `chat_client`:
 | `/nick <new_name>` | Change your display name | `/nick Shadow` |
 | `/clear` | Clear terminal screen | `/clear` |
 | `/quit` | Cleanly disconnect | `/quit` |
+

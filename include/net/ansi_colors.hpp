@@ -80,3 +80,4 @@ inline std::string sanitize_message(std::string_view input) {
 }
 
 } // namespace net::ui
+
