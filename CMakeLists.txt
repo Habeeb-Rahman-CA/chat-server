@@ -59,3 +59,9 @@ add_executable(stage3_server
 )
 target_link_libraries(stage3_server PRIVATE net_common)
 
+# Stage 4: Non-Blocking Sockets and select()
+add_executable(stage4_server
+    src/stage4/server.cpp
+)
+target_link_libraries(stage4_server PRIVATE net_common)
+

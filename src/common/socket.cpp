@@ -3,6 +3,7 @@
 #include <arpa/inet.h>
 #include <cerrno>
 #include <cstring>
+#include <fcntl.h>
 #include <stdexcept>
 #include <system_error>
 
@@ -20,6 +21,21 @@ void set_reuse_addr(int fd, bool enable) {
     int optval = enable ? 1 : 0;
     if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) < 0) {
         throw std::system_error(errno, std::generic_category(), "setsockopt(SO_REUSEADDR) failed");
+    }
+}
+
+void set_nonblocking(int fd, bool enable) {
+    int flags = ::fcntl(fd, F_GETFL, 0);
+    if (flags < 0) {
+        throw std::system_error(errno, std::generic_category(), "fcntl(F_GETFL) failed");
+    }
+    if (enable) {
+        flags |= O_NONBLOCK;
+    } else {
+        flags &= ~O_NONBLOCK;
+    }
+    if (::fcntl(fd, F_SETFL, flags) < 0) {
+        throw std::system_error(errno, std::generic_category(), "fcntl(F_SETFL) failed");
     }
 }
 

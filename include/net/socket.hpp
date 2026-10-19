@@ -74,6 +74,9 @@ Socket create_tcp_socket();
 // without waiting for sockets in TIME_WAIT state to expire.
 void set_reuse_addr(int fd, bool enable = true);
 
+// Configures socket non-blocking mode via fcntl(fd, F_SETFL, O_NONBLOCK)
+void set_nonblocking(int fd, bool enable = true);
+
 // Converts an IPv4 string and port into a sockaddr_in structure.
 bool parse_ipv4(const std::string& ip_str, uint16_t port, struct sockaddr_in& out_addr);
 
