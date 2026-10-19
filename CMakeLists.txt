@@ -77,3 +77,9 @@ add_executable(stage6_server
 )
 target_link_libraries(stage6_server PRIVATE net_common)
 
+# Stage 7: Reliability and Security Server
+add_executable(stage7_server
+    src/stage7/server.cpp
+)
+target_link_libraries(stage7_server PRIVATE net_common)
+
